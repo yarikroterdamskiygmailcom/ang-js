@@ -1,0 +1,54 @@
+<md-dialog aria-label="Mango (Fruit)">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Post news</h2>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <form name="formValidations"></form>
+            <form name="formValidation">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Title</label>
+                    <input type="text" name="title" ng-model="inputtitle" ng-minlength="6" ng-maxlength="12" required>
+                    <div class="md-input-messages-animation" ng-show="formValidation.title.$dirty">
+                        <div ng-show="formValidation.title.$error.required" class="md-input-messages-animation">This
+                            is required!
+                        </div>
+                        <div ng-show="formValidation.title.$error.maxlength" class="md-input-messages-animation">
+                            That's too long!
+                        </div>
+                        <div ng-show="formValidation.title.$error.minlength" class="md-input-messages-animation">
+                            That's too short!
+                        </div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Content</label>
+                    <textarea type="text" name="content" ng-model="inputcontent" ng-minlength="6" ng-maxlength="800"
+                              required></textarea>
+                    <div ng-show="formValidation.content.$dirty">
+                        <div ng-show="formValidation.content.$error.required" class="md-input-messages-animation">This
+                            is required!
+                        </div>
+                        <div ng-show="formValidation.content.$error.maxlength" class="md-input-messages-animation">
+                            That's too long!
+                        </div>
+                        <div ng-show="formValidation.content.$error.minlength" class="md-input-messages-animation">
+                            That's too short!
+                        </div>
+                    </div>
+                </md-input-container>
+                <md-button ng-click="userForm.cancel()">
+                    cancel
+                </md-button>
+                <md-button type="submit" ng-click="userForm.answer(formValidation)">
+                    Add
+                </md-button>
+            </form>
+
+        </md-dialog-content>
+    </form>
+</md-dialog>

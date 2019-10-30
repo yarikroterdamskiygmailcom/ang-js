@@ -1,0 +1,88 @@
+<div class="table-container">
+
+    <div class="container">
+        <div class="block">
+            <div>
+                <div>Total</div>
+                <div>{{dataTable.total()}}</div>
+            </div>
+            <div>
+                <div>Completed</div>
+                <div> {{dataTable.completed()}}</div>
+            </div>
+
+            <div>
+                <div>Not completed</div>
+                <div>{{dataTable.notCompleted()}}</div>
+            </div>
+        </div>
+        <md-table-container>
+            <table md-table
+                   md-row-select
+                   multiple
+                   ng-model="dataTable.selected"
+                   md-progress="dataTable.promise">
+                <thead md-head
+                       md-order="dataTable.query.order"
+                       md-on-reorder="dataTable.getPagesData">
+                <tr md-row>
+                    <th md-column
+                        md-order-by="id">
+                        <span>id</span>
+                    </th>
+                    <th md-column
+                        md-numeric
+                        md-order-by="title">
+                        <span>title</span>
+                    </th>
+                    <th md-column
+                        md-numeric>
+                        content
+                    </th>
+                    <th md-column
+                        md-numeric>
+                        status
+                    </th>
+                </tr>
+                </thead>
+                <tbody md-body>
+                <tr md-row
+                    md-select="data"
+                    md-select-id="id"
+                    md-auto-select
+                    ng-repeat="data in dataTable.rendererData | orderBy: myOrder"
+                >
+                    <td md-cell>{{data.id}}</td>
+                    <td md-cell>{{data.title}}</td>
+                    <td md-cell>{{data.content}}</td>
+                    <td md-cell>
+                        <md-input-container>
+                            <!--                            <label>State</label>-->
+                            <md-select ng-model="data.status">
+                                <md-option ng-disabled="true"><em>None</em></md-option>
+                                <md-option
+                                        ng-repeat="state in dataTable.states"
+                                        ng-value="state"
+                                >
+                                    {{state}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+        <md-table-pagination
+                md-limit="dataTable.query.limit"
+                md-limit-options="[5, 10, 15]"
+                md-page="dataTable.query.page"
+                md-total="{{dataTable.data.length}}"
+                md-on-paginate="dataTable.getPagesData"
+                md-page-select>
+        </md-table-pagination>
+
+        <md-button class="md-raised md-primary" ng-click="dataTable.add($event)">Add</md-button>
+        <md-button class="md-raised md-warn" ng-show="dataTable.isSelectedItems()" ng-click="dataTable.delete($event)">delete</md-button>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<md-toolbar class="md-hue-2" style="position: fixed;">
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" ng-click="vm.open('closeEventsDisabled')" aria-label="Settings">
+          <i class="material-icons">
+            dehaze
+          </i>
+        </md-button>
+
+        <h2 flex="" md-truncate="">Toolbar with Disabled/Enabled Icon Buttons</h2>
+        <md-button class="md-icon-button" aria-label="More" ng-click="vm.open('right')">
+          <i class="material-icons">
+            format_list_bulleted
+          </i>
+        </md-button>
+    </div>
+</md-toolbar>
+<div layout="column"  class="sidenavdemoDisableCloseEvents" ng-click="vm.close('closeEventsDisabled')">
+
+  <section layout="row" flex="">
+
+    <md-sidenav class="md-sidenav-left" style="overflow-x: hidden" md-component-id="closeEventsDisabled" md-whiteframe="4" md-disable-close-events="">
+
+      <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">Panel navigation</h1>
+      </md-toolbar>
+
+      <div style="display: flex;flex-direction: column">
+          <md-button class="md-primary" ng-repeat="one in vm.lists">
+              {{one}}
+          </md-button>
+      </div>
+
+    </md-sidenav>
+  </section>
+</div>
+
+<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+
+    <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">User panel</h1>
+    </md-toolbar>
+    <md-content layout-padding="">
+        <div style="display: flex;flex-direction: column">
+            <div style="background-image: url('https://im9.kommersant.ru/CorpImages/Authors/2_!no_photo_m_4.png');
+            background-size: cover;align-self: center;width: 60px;height:60px;border: 1px solid lightgrey; border-radius: 50%"></div>
+            <md-button class="md-primary" ng-if="vm.token !=null?false:true" ng-click="vm.to('registration')" >
+                Registration
+            </md-button>
+            <md-button class="md-primary" ng-if="vm.token !=null?false:true" ng-click="vm.to('login')">
+                Login
+            </md-button>
+            <md-button class="md-primary" ng-if="vm.token !=null?true:false" ng-click="vm.active()">
+                To advertise
+            </md-button>
+            <md-button class="md-primary" ng-if="vm.token !=null?true:false" ng-click="vm.logout()">
+                Log Out
+            </md-button>
+        </div>
+    </md-content>
+
+</md-sidenav>
+
+
