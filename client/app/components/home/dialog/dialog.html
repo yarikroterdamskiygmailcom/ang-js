@@ -12,7 +12,7 @@
             <form name="formValidation">
                 <md-input-container class="md-block" flex-gt-sm>
                     <label>Title</label>
-                    <input type="text" name="title" ng-model="inputtitle" ng-minlength="6" ng-maxlength="12" required>
+                    <input type="text" name="title" ng-model="inputtitle" ng-minlength="6" ng-maxlength="80" required>
                     <div class="md-input-messages-animation" ng-show="formValidation.title.$dirty">
                         <div ng-show="formValidation.title.$error.required" class="md-input-messages-animation">This
                             is required!

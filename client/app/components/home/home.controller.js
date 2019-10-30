@@ -1,7 +1,144 @@
 import dialog from './dialog/dialog.html'
 
 class HomeController {
-    data = [];
+    data = [
+        {
+            id: 1,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 2,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 3,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 4,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 5,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 6,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 7,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 8,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 9,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 10,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 11,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 12,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 13,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 14,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 15,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 16,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 17,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 18,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 19,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 20,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 21,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 22,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 23,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 24,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 25,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 26,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },{
+            id: 27,
+            title: 'rewerwe',
+            content: '432234234234',
+            status: 'new'
+        },
+    ];
     rendererData = [];
     query = {
         order: 'name',
@@ -18,8 +155,10 @@ class HomeController {
 
     getPagesData = (e) => {
         e ? this.query.order = e : e = this.query.order;
+
         const page = this.query.page;
         const limit = this.query.limit;
+
         let arr = [...this.data];
 
         if(e === 'id'){
@@ -34,14 +173,13 @@ class HomeController {
             })
         }
 
-        if(e.indexOf('-') > -1){
+        if(typeof e === 'string' && e.indexOf('-') > -1){
             arr = arr.reverse()
         }
 
-        this.rendererData = arr.splice(
-            page ? (page - 1) * limit : 0,
-            page ? limit * page : limit
-        );
+        const start = page ? (page - 1) * limit : 0;
+
+        this.rendererData = arr.splice(start, limit);
     };
 
     total = () => this.data.length;
